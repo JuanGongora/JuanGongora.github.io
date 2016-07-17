@@ -172,7 +172,7 @@ Now to quickly recap what has been covered thus far:
 * *initialize* is used to assign *instance variables* and is an *instance method* itself
 * variables that have the @ character are *instance variables* which belong to object instances of that class
 * when an *instance variable* is made inside a method's class, it can be used by anything within the parameters of that class
-* *instance methods* are associated with the instance of a class, so are capable of being called on any *instantiated* objects of the same class 
+* *instance methods* are associated with the instance of a class, so are capable of being called on any instantiated objects of the same class 
 * *accessor methods* can help us obtain the variables of a class object, as well as assign new values to pre-existing variables
 
 Phew!!
