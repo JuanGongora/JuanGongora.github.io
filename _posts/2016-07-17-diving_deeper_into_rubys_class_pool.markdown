@@ -48,9 +48,9 @@ I should probably mention that it's usually considered good practice to use *ini
 
 You should start to see now that *instance variables* are what's keeping track of the states of objects. Like in my `example` variable; the object identified as `example` is the string called `"bulldog"`. This object state is what's recorded in the *instance variable* named `@dog`. This property of *instance variables,* and their survival across method calls are what makes them so resilient in containing object states throughout a program.
 
-An important thing to recognize however is that *Instance variables* are only accessible from *instance methods*, but those* instance methods* can be declared anywhere within the program.
+An important thing to recognize however is that *Instance variables* are only accessible from *instance methods*, but those *instance methods* can be declared anywhere within the program.
 
-So when you create methods that are stored inside of a class, they are completely capable of being shared with any and all *instantiated* objects of the class. This is called an *instance method* and its quite a powerful design. So let's make an extra *instance method* inside of our class `Sheriff` to get a better feel for it:
+So when you create methods that are stored inside of a class, they are completely capable of being shared with any and all *instantiated* objects of the class. That's what an *instance method* is, and its quite a powerful design. So let's make an extra *instance method* inside of our class `Sheriff` to get a better feel for it:
 
 ```
 class Sheriff
