@@ -1,13 +1,13 @@
 ---
 layout: post
 title:  "Getting to know Classes in Ruby"
-date:   2016-06-28 05:10:24 +0000
+date:   2016-06-28 01:10:25 -0400
 ---
 
 
 As my dive into Ruby continues, I am starting to comprehend the reasoning behind it's calling of an *object oriented language*.
 
-The basic premise here is that everything in Ruby is supposed to be an object. But what does that mean exactly?
+The basic premise here is that almost everything in Ruby is supposed to be an object. But what does that mean exactly?
 Well, an object is really anything from a string to an integer. And each object has built in functions or ‘method(s)’ which can be used to do a lot of different things.
 
 So why is it called a method? Well that's because it provides a *method*, or way for an object to respond to its contained messages, and then do something about that message in return.
