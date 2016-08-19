@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Reaching the end of the Ruby Class Jungle"
-date:   2016-08-19 02:21:57 +0000
+date:   2016-08-18 22:21:57 -0400
 ---
 
 
@@ -126,8 +126,8 @@ As you can see from above, the value of `@@count` was converted to 3: which was 
 
 Something to note about *class variables* is that they do have a specific gap in regards to visibility. That is, when it comes to a class and its instances, a *class variable* is private to that class alone. So if you want to make them accessible to the outside world, you can continue using *instance methods* like we already have been doing: or you can use what's called a *class method*:
  
- ```
- class Alien
+```
+class Alien
   @@count = 13
 
   def self.get_count
@@ -168,7 +168,7 @@ That explains how we can invoke the *class method* from `Alien` itself rather th
  
 If we wanted to have an* instance method* that was called like a *class method* (i.e. not from an instantiated object but from the class itself) we'd have to tweak it like so:
  
- ```
+```
 class Alien
   @@count = 13
   @share = 9
@@ -404,7 +404,7 @@ As we walk towards the structure we start to make out what looks like a sealed t
 I guess we better listen to it...
 
 * Variables which begin with two @@ characters are called *class variables*. They are private to a class and its instances, but when accessed through *accessor methods* you have the convenience of not having to write `self.class` from an instance object. You also get automatic sharing throughout the class hierarchy.
-* *Class methods* differ from *instance methods* by their method definition: which places the class name and a period in front of the method's name. *Class methods *are for things that don't operate on the individual instance of an object, or for cases where you don't have the instance available to you. It's primary use is for updating all users of the class to a specific condition.
+* *Class methods* differ from *instance methods* by their method definition: which places the class name and a period in front of the method's name. *Class methods* are for things that don't operate on the individual instance of an object, or for cases where you don't have the instance available to you. It's primary use is for updating all users of the class to a specific condition.
 * From the sample class `Alien` written earlier above, remember that at the outer level of a class definition, and inside the *class methods*, `self` is the class object `Alien` whereas in the *instance methods*, `self` is the instance of `Alien` that’s calling the method.
 * With *attribute accessors*, Ruby provides us with an easy way to access an object’s variables. An*attribute accessor* is the property of an object whose value can be read and/or written through the object itself.
 * Ruby's an [interpreted](https://en.wikipedia.org/wiki/Interpreted_language) language, so it keeps its [Symbol Table](http://blog.khd.me/ruby/ruby-symbols/) handy at all times. You can find out what's on it at any given moment by calling `Symbol.all_symbols`.
