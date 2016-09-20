@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Oh Module where art thou?"
-date:   2016-09-20 02:18:59 +0000
+date:   2016-09-19 22:19:00 -0400
 ---
 
 Under the canopy of a lustrious tree, laid our camping ground. Haphazardly set up due to fatigue from our long treck into the heart of the Ruby jungle. I've been logging our discoveries in my journal since we started this treck. 
@@ -221,7 +221,7 @@ Methods that come from `include` will have higher priority in the *inheritance h
 
 We can preview this by using the *[ancestors](http://ruby-doc.org/core-2.0.0/Module.html#method-i-ancestors)* method:
 
- ```
+```
 module Artifact
 end
 
