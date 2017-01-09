@@ -190,7 +190,7 @@ class Statue
 
   def examine
     puts "Wow. #{Shiny}, coming from the mixin module!"
-	end
+ end
 	
 end	
 ```
@@ -394,7 +394,7 @@ Is a module included by the `Object` class. *Kernel* defines Ruby’s ‘built-i
 
 *Marshal*:
 
-An alternative way of saving and loading data is provided by Ruby’s *Marshal* library. This has a similar set of methods to [YAML](https://en.wikipedia.org/wiki/YAML) to enable you to save and load data to and from disk. *Marshal *files are in binary format. So while you may be able to read some characters, such as those in the strings, you won’t simply be able to load the saved data and modify it in a text editor. Marshaled data has major and minor version numbers stored along with the object information. In normal use, marshaling can only load data written with the same major version number and an equal or lower minor version number.
+An alternative way of saving and loading data is provided by Ruby’s *Marshal* library. This has a similar set of methods to [YAML](https://en.wikipedia.org/wiki/YAML) to enable you to save and load data to and from disk. *Marshal* files are in binary format. So while you may be able to read some characters, such as those in the strings, you won’t simply be able to load the saved data and modify it in a text editor. Marshaled data has major and minor version numbers stored along with the object information. In normal use, marshaling can only load data written with the same major version number and an equal or lower minor version number.
 
 *Math*:
 
