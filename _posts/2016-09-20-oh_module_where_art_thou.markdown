@@ -136,11 +136,11 @@ end
 ```
 
 Okay let's first attempt to access the constant inside of the module `Artifact`:
-<a id="target">
+<p id="target">
 ```
 puts Artifact::Shiny
 ```
-</a>
+</p>
 Terminal:
 
 ```
