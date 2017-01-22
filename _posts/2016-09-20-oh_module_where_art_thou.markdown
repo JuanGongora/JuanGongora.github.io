@@ -147,7 +147,7 @@ Terminal:
 This is a constant variable
 ```
 
-Take notice of the double colon `::` between the module and constant names. This syntax is called the [*scope resolution operator*](http://stackoverflow.com/questions/5032844/ruby-what-does-prefix-do), and its what lets us access nested modules and classes.
+<id="target">Take notice of the double colon `::` between the module and constant names. This syntax is called the [*scope resolution operator*](http://stackoverflow.com/questions/5032844/ruby-what-does-prefix-do), and its what lets us access nested modules and classes.
 
 Now let's try to access the module's *class method*:
 
