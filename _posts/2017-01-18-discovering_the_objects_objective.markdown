@@ -192,10 +192,10 @@ Which leads us to the ancient one: [*BasicObject*](https://ruby-doc.org/core-2.2
 
 I will give you a warning about this class, I was unable to leave this floor because of `BasicObject`. I tried numerous *methods* on it but it wouldn't budge. There were inscriptions on the walls that explained what it was but I couldn't decipher them. I hope that you can figure them out, because this class is blocking the exit to the Ziggurat. I paid a high price for discovering Ruby's arcane knowledge, I pray that you don't get trapped here like me... 
 
-<sub>~</sub>*Fin*
+~*Fin*
 
 .............Uhhh...... That sounds super reassuring....<br>
-Poor guy... We better figure out how <u>*not*</u> to end up like our headless skeleton friend...
+Poor guy... We better figure out how <u>not</u> to end up like our headless skeleton friend...
 
 Looks like we have no choice but to move forward now. Let's see if we can find some clues about *BasicObject*. 
 
@@ -341,7 +341,7 @@ For example, our `EscapeDungeon` class knows very little since it's coming from 
 
 Our goal here is to have `MonsterCapture` (which does include `Kernel`) recognize that method in its internal class `ShrinkRay`, so that it can then operate on that utility method on behalf of `EscapeDungeon`.
 
-In order for us to make this a possibilty, we have to access the Ruby standard library by referencing the desired constant(class or module) using a full class path. Like we have done above with ` ::MonsterCapture::ShrinkRay.zapper`(*this brings us back to the usage of the* [*scope resolution operator*](http://imjuan.com/2016/09/20/oh_module_where_art_thou/#target)). As a result, we are then able to call the utility methods coming from the module's class into a class from `BasicObject`.
+In order for us to make this a possibilty, we have to access the Ruby standard library by referencing the desired constant(class or module) using a full class path. Like we have done above with `::MonsterCapture::ShrinkRay.zapper`(this brings us back to the usage of the [scope resolution operator](http://imjuan.com/2016/09/20/oh_module_where_art_thou/#target)). As a result, we are then able to call the utility methods coming from the module's class into a class from `BasicObject`.
 
 ```
 #=> yet to be defined method 'monster' being called from the BasicObject child class
