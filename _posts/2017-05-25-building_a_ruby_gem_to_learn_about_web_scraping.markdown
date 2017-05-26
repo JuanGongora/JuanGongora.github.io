@@ -302,8 +302,8 @@ Sat Mar 11 02:29:25 UTC 2017
 
 Before I move ahead let me show you the current state of the `Parser` class with all the methods combined together:
 
-<div class="noborder" style="overflow: auto; width:960px; height: 797px;">
-    <div class="noborder" style="width: 750px;">
+<div class="noborder" style="overflow: auto; width:730px; height: 797px;">
+    <div class="noborder" style="width: 1479px;">
         <img src="http://i.imgur.com/XiUVFl5.png" style="float: left; width: 1479px; height: 780px; margin: 0 5px;" alt="class Parser">
     </div>
 </div>
