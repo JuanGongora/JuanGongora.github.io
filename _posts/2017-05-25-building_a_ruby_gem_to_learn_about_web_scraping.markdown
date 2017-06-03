@@ -563,7 +563,7 @@ If I could create a database that also gathers this content, I would be able to 
 
 Not to mention that it would allow me to make organized layouts for the information within the database, which I could later use to say, print out the information!
 
-On [part 2](http://imjuan.com/2017/05/30/building_a_ruby_gem_to_learn_about_web_scraping_part_2/) of this gem build, I will show how I built a database for my downloaded content.
+On [part 2](http://imjuan.com/2017/05/29/building_a_ruby_gem_to_learn_about_web_scraping_part_2/) of this gem build, I will show how I built a database for my downloaded content.
 
 
 
