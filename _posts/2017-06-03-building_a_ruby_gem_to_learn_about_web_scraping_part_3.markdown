@@ -1,10 +1,10 @@
 ---
 layout: post
 title:  Building a Ruby gem to learn about web scraping (Part 3)
-date:   2017-06-03 20:11:17 +0000
+date:   2017-06-03 16:11:18 -0400
 ---
 
-In the previous part, I showed how I built a *sqlite3* integration into my *Ruby* methods, so that I could build a database to store my scraped content. In this section, I'm going to build up the differentiation between the classes that store information, that is based on user choice. If you'd like to check out *Part 2* before continuing, please click [here](http://imjuan.com/2017/05/30/building_a_ruby_gem_to_learn_about_web_scraping_part_2/).
+In the previous part, I showed how I built a *sqlite3* integration into my *Ruby* methods, so that I could build a database to store my scraped content. In this section, I'm going to build up the differentiation between the classes that store information, that is based on user choice. If you'd like to check out *Part 2* before continuing, please click [here](http://imjuan.com/2017/05/29/building_a_ruby_gem_to_learn_about_web_scraping_part_2/).
 
 **Working Up the MTG Class**
 
@@ -687,7 +687,7 @@ It's all finished! It was a long and educational journey, and I picked up a coup
 
 If you are interested to learn more about the gem releasing portion of this walkthrough, I recommend these three different articles:
 
-* [rubygems.org](http://guides.rubygems.org/make-your-own-gem/#adding-an-executable)
+* [rubygems.org](http://guides.rubygems.org/make-your-own-gem/#introduction)
 
 * [bundler.io](https://bundler.io/v1.13/guides/creating_gem)
 
