@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Building a Ruby gem to learn about web scraping (Part 3)
+title:  "Building a Ruby gem to learn about web scraping (Part 3)"
 date:   2017-06-03 16:11:18 -0400
 ---
 
@@ -461,7 +461,7 @@ The next option that I also had to implement was the [`Referer`](https://en.wiki
 
 If I can replicate these options in a more natural way, then I won't have hiccups trying to scrape the information that I need. Hence, why I'm using the [`.pre_connect_hooks`](http://www.rubydoc.info/gems/mechanize/Mechanize:pre_connect_hooks) method with my `lambda` block arguments: `user_agent`, and `Referer`.
 
-**Organizing My File Tree For Gem Implementation **
+**Organizing My File Tree For Gem Implementation**
 
 I have now officially completed the app. All of my classes work in unison with each other, and are able to offer the user the options that I originally imagined for it. All I need to do now is revise my directory layout for a gem implementation.
 
