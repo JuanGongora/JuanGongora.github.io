@@ -1,10 +1,10 @@
 # Site settings
-title: A newbie's journey into the world of programming
+title: Hi there, I'm Juan
 header-img: img/home-bg.png
 email: gongora.animations@gmail.com
 copyright_name: JuanGongora
 description: > # this means to ignore newlines until "baseurl:"
-  
+  My documented journey into technology
 baseurl: "" # the subpath of your site, e.g. /blog
 twitter_username: 
 github_username:  JuanGongora
