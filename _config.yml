@@ -1,0 +1,21 @@
+# Site settings
+title: Hi there, I'm Juan
+header-img: img/home-bg.png
+email: gongora.animations@gmail.com
+copyright_name: JuanGongora
+description: > # this means to ignore newlines until "baseurl:"
+  My documented journey into technology
+baseurl: "" # the subpath of your site, e.g. /blog
+twitter_username: 
+github_username:  JuanGongora
+learn_profile: JuanGongora
+email_username: gongora.animations@gmail.com
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+permalink: pretty
+paginate: 5
+exclude: ["less","node_modules","Gruntfile.js","package.json","README.md"]
+
+gems: [jekyll-paginate, jekyll-feed]
