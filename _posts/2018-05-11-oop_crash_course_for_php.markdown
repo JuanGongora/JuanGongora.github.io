@@ -69,7 +69,7 @@ function __construct($options) {
 
 So here the variable `$this` is capable of being referenced to the other methods in the class. `$this` is the private variable (which references the particular instance of the class that's currently being worked on, or rather, being instantiated by the constructor; think of 'self'). 
 
-And here, options is just a variable that is put at that current state, but it then becomes a property of the class when we establish it here to the private variable. So for this instance of the class (referred to as 'self' or `$this`), we're going to pass it some options and then we're going to set those parameters as a property within the class which we can then reference anywhere else.  
+And here, `options` is just a variable that is put at that current state, but it then becomes a **property** of the class when we establish it here to the private variable. So for this instance of the class (referred to as 'self' or `$this`), we're going to pass it some `options` and then we're going to set those parameters as a property within the class which we can then reference anywhere else.  
 
 Notice that when you establish the **property** you don't use a dollar sign like you would for a traditional variable: `options`.
 
