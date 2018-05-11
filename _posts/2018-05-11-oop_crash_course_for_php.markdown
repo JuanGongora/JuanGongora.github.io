@@ -77,7 +77,7 @@ Notice that when you establish the **property** you don't use a dollar sign like
 
 In the next couple of lines, we're then looping through the `$options` array, which is what was passed in as the argument to the constructor, and as a result, we're adding some additional properties to the class.
 
-This will in turn make it a little bit easier to reference them later on, so we don't always have to refer to options directly.
+This will in turn make it a little bit easier to reference them later on, so we don't always have to refer to `options` directly.
 
 At the end of the `__construct` method, we're creating a new **property** for the class called `path`, but we're establishing it the same way as `options`. Which could also have the potential to become a public variable: `public $path;`.
 
@@ -160,7 +160,7 @@ class PrintedPage implements Page {
 
 By implementing `Page` to the `class PrintedPage` it now requires the usage of those methods. So it needs to have `build`, as well as `theme`. If either of those methods aren't implemented, then it would throw an error:
 
-`Fatal error: Class DefaultPage contains 1 abstract method and must therefore be declared abstract or implement the remaining methods (Page::iDoNotExist) in /app/indexes.php on line 105 Call Stack: 0.0001 365016 1. {main}() /app/indexes.php:0 `
+`Fatal error: Class PrintedPage contains 1 abstract method and must therefore be declared abstract or implement the remaining methods (Page::iDoNotExist) in /app/index.php on line 105 Call Stack: 0.0001 365016 1. {main}() /app/index.php:0 `
 
 Now for abstract classes:
 
@@ -199,7 +199,7 @@ So, whereas with an interface, we had to duplicate the `build`, as well as `them
 
 But we also have the advantage of telling the classes that will inherit from it specific things that they do need to do in order to behave in the way that we expect.
 
-# Public/Private/Protected
+<center>**Public/Private/Protected**</center>
 
 Going back to the public variable that was discussed earlier, a class is also capable of storing private variables:
 `private $settings; `
@@ -213,11 +213,11 @@ Take note that public, private, and protected can also be used on methods. It is
 
 It would not be called by an instance, and would not be inherited by a class that was extending it. It would basically be a method that is only called internally within the class, by either a method that was referencing it, or by a class variable that was assigned to reference it. Otherwise, the user is not capable of calling this private method independently.
 
-# Object Oriented Guidelines
+<center>**Object Oriented Guidelines**</center>
 
 For the sake of organization, it's common practice to have classes that contain methods which are relevant to their operations. If this is not the case, then it's prudent to separate those non equivalent methods into their own classes.
 
-This can be furthered even more by having those now separated classes actually by contained in alternate files. The advantage of this is visual clarity, and ease of refactoring. If everything is not bundled up into one file, it makes it easier for the coder to parse through its content and get a faster understanding of its components.
+This can be furthered even more by having those now separated classes actually be contained in alternate files. The advantage of this is visual clarity, and ease of refactoring. If everything is not bundled up into one file, it makes it easier for the coder to parse through its content and get a faster understanding of its components.
 
 But in order for those separated files to still communicate with one another we would have to use the *require* keyword:
 
@@ -255,7 +255,9 @@ Where namespacing really shines, is when there is a duplicate name for something
 By having the `use` keyword, along with the virtual path (that leads to the file containing the specific redundant word) you are now capable of setting that specific version to work on your file:
 
 ```
-//this file is called PrintedPage.php
+
+// this file is called PrintedPage.php
+
 <?php
 
 namespace BAM\OOPExampleSite\Page;
@@ -281,7 +283,8 @@ class PrintedPage extends Page {
 ?>
 ```
 
-The first line: `namespace BAM\OOPExampleSite\Page;` is a sub-directory that contains the current class `PrintedPage`. The second line `use BAM\OOPExampleSite\Page;` is actually a reference to the parent `class Page`, which is being extended by `PrintedPage`. So if we were to go to the file where class Page resides, we would simply see this at the top: `namespace BAM\OOPExampleSite;`
+The first line: `namespace BAM\OOPExampleSite\Page;` is a sub-directory that contains the current class `PrintedPage`. The second line `use BAM\OOPExampleSite\Page;` is actually a reference to the parent `class Page`, which is being extended by `PrintedPage`. So if we were to go to the file where `class Page` resides, we would simply see this at the top: 
+`namespace BAM\OOPExampleSite;`
 
 The reason why we are using:
 
@@ -295,7 +298,7 @@ On the file above, is because if we didn't, we would get an error thrown back at
 
 `Fatal error: Class 'BAM\OOPExampleSite\Page\Page' not found in /app/lib/PrintedPage.php`
 
-It would believe that it needs to find a file `Page` inside a directory called `Page`. Instead we use the file Page that contains the extended class at path `BAM\OOPExampleSite`. While at the same time we have **CREATED** a virtual folder called `Page`, which contains the file above (called `PrintedPage.php`). Take note that it also in a sense makes the class itself like a directory too. Because if it's referenced simply **by name**, like it is in `PrintedPage.php`, then it's associating the `Page` class as a directory to its methods.
+It would believe that it needs to find a file `Page` inside a directory called `Page`. Instead we use the file `Page` that contains the extended class at path `BAM\OOPExampleSite`. While at the same time we have **CREATED** a virtual folder called `Page`, which contains the file above (called `PrintedPage.php`). Take note that it also in a sense makes the class itself like a directory too. Because if it's referenced simply **by name**, like it is in `PrintedPage.php`, then it's associating the `Page` class as a directory to its methods.
 
 There's also one more neat way to show you how to handle same word conflicts:
 
