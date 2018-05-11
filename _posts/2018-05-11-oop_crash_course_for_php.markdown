@@ -1,12 +1,12 @@
 ---
 layout: post
 title:      "OOP Crash Course for PHP"
-date:       2018-05-11 20:06:05 +0000
+date:       2018-05-11 16:06:06 -0400
 permalink:  oop_crash_course_for_php
 ---
 
 
-For the last few months, I've been learning about PHP, in order to understand, and work on a framework that relied on this language. Now PHP is not a full oject oriented language like Ruby, it has a lot of procedural, and functional programming built into it. Which is interesting because I came from learning Ruby, which is hard core OOP, due thanks to the awesome teaching from Flatiron School.
+For the last few months, I've been learning about PHP, in order to understand, and work on a framework that relied on this language. Now PHP is not a full object oriented language like Ruby, it has a lot of procedural, and functional programming built into it. Which is interesting because I came from learning Ruby, which is hard core OOP, due thanks to the awesome teaching from Flatiron School.
 
 PHP will give you however, a lot of **AHA!** moments when you are reading and comparing it to Ruby, but some things are definetly a little funky in definition when it comes to orienting something to a particualr writing methodology. This is because as I mentioned, PHP taps into other formats of writing aside from OOP. This can at the same time be good, but also confusing if you don't know how to associate the differences in the syntax.
 
