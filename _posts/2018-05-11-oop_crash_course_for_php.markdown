@@ -376,9 +376,9 @@ As a result it recognizes that `Builder` is a name which is being `use`(d). So i
 
 Using the `explode()` function, it separates the string paths into array values, and then with the `end()` function, it grabs the last value of that array (which is the name of the class) in order to dynamically set the included path of the class into that file.
 
-> Note: Once you implement third-party libraries, it's best to create real path directories in reference to your `use`(d) files. Because even though namespacing is capable of creating virtual path directories, it might end up overlapping with an actual third party path that really exists, and that may also use a similar path name to that of your virtual path.
+> Note: Once you implement third-party libraries, it's best to create real path directories in reference to your `use`(d) files. Because even though namespacing is capable of creating virtual path directories, it might end up overlapping with an actual third party path that really exists, and it could also use a similar path name to that of your virtual path.
 
-That about sums it up for a quick and handy overview of OOP in PHP. I have been working on other PHP related learning, specifically the Symfony framework, which is built on top of the Drupal 8 CMS. I will be covering a short overview of what exactly that is, and how it builds PHP applications through its set of packages and networked functions.
+That about sums it up for a quick and handy overview of OOP in PHP. I have been working on other PHP related learning, specifically the Symfony framework, which is built on top of the [Drupal 8 CMS](https://www.drupal.org/). I will be covering a short overview of what exactly that is, and how it builds PHP applications through its set of packages and networked functions.
 
 Until then, happy coding!
 
