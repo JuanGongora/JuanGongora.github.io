@@ -199,7 +199,7 @@ So, whereas with an interface, we had to duplicate the `build`, as well as `them
 
 But we also have the advantage of telling the classes that will inherit from it specific things that they do need to do in order to behave in the way that we expect.
 
-<center><h1>Public/Private/Protected</h1></center>
+<center>Public/Private/Protected</center>
 
 Going back to the public variable that was discussed earlier, a class is also capable of storing private variables:
 `private $settings; `
@@ -213,7 +213,7 @@ Take note that public, private, and protected can also be used on methods. It is
 
 It would not be called by an instance, and would not be inherited by a class that was extending it. It would basically be a method that is only called internally within the class, by either a method that was referencing it, or by a class variable that was assigned to reference it. Otherwise, the user is not capable of calling this private method independently.
 
-<center><h1>Object Oriented Guidelines</h1></center>
+<center>Object Oriented Guidelines</center>
 
 For the sake of organization, it's common practice to have classes that contain methods which are relevant to their operations. If this is not the case, then it's prudent to separate those non equivalent methods into their own classes.
 
@@ -256,7 +256,6 @@ By having the `use` keyword, along with the virtual path (that leads to the file
 
 
 ```
-<?php
 // this code is in a file called PrintedPage.php
 
 namespace PHP\OOPExampleSite\Page;
@@ -278,7 +277,6 @@ class PrintedPage extends Page {
         </body>
       </html>';
   }
-?>
 ```
 
 The first line: `namespace PHP\OOPExampleSite\Page;` is a sub-directory that contains the current class `PrintedPage`. The second line `use PHP\OOPExampleSite\Page;` is actually a reference to the parent `class Page`, which is being extended by `PrintedPage`. So if we were to go to the file where `class Page` resides, we would simply see this at the top: 
