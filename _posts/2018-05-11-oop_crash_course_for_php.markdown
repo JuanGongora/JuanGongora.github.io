@@ -199,7 +199,7 @@ So, whereas with an interface, we had to duplicate the `build`, as well as `them
 
 But we also have the advantage of telling the classes that will inherit from it specific things that they do need to do in order to behave in the way that we expect.
 
-<center><h2>Public/Private/Protected</h2></center>
+<center>**Public/Private/Protected**</center>
 
 Going back to the public variable that was discussed earlier, a class is also capable of storing private variables:
 `private $settings; `
@@ -213,7 +213,7 @@ Take note that public, private, and protected can also be used on methods. It is
 
 It would not be called by an instance, and would not be inherited by a class that was extending it. It would basically be a method that is only called internally within the class, by either a method that was referencing it, or by a class variable that was assigned to reference it. Otherwise, the user is not capable of calling this private method independently.
 
-<center><h2>Object Oriented Guidelines</h2></center>
+<center>**Object Oriented Guidelines**</center>
 
 For the sake of organization, it's common practice to have classes that contain methods which are relevant to their operations. If this is not the case, then it's prudent to separate those non equivalent methods into their own classes.
 
@@ -229,13 +229,13 @@ Also if you look at the string, the file that it's requiring is titled `Builder.
 
 Now, on to another version of including code from another place: *namespacing*.  So what is it exactly? A namespace is kind of like a virtual folder. It allows you to have a file for example, that could be anywhere in the directory, BUT have it still belong to a special directory: 
  
-`namespace BAM\OOPExampleSite;`
+`namespace PHP\OOPExampleSite;`
 
 This file though, isn't actually in that special directory at all. This is all *virtual*, right? And it's not like we are using the file as a `require`. But, in order to use a class that includes a namespace, we have to specify that it belongs to this namespace.
 
-So say that `Builder.php` has the following line at the top of its file: `namespace BAM\OOPExampleSite;`
+So say that `Builder.php` has the following line at the top of its file: `namespace PHP\OOPExampleSite;`
 
-The `class Builder` is now a namespace of an `BAM\OOPExampleSite` directory. 
+The `class Builder` is now a namespace of an `PHP\OOPExampleSite` directory. 
 
 It can be used to explicitly request an element from that current namespace or a sub-namespace. You could say that it's the equivalent of the *self* operator for classes. 
 
@@ -243,24 +243,24 @@ If it wasn't a namespace, you would instead have to use the entire path in a met
 
 ```
 public function build() {
-  $builder = new BAM\OOPExampleSite\Builder();
+  $builder = new PHP\OOPExampleSite\Builder();
   $this->output = $builder->render($this->settings);
 }
 ```
 
-But by simply having the snippet` namespace BAM\OOPExampleSite;`, it's already assuming that `Builder` is related to that namespace, so it can be called without having to include the entire path.
+But by simply having the snippet` namespace PHP\OOPExampleSite;`, it's already assuming that `Builder` is related to that namespace, so it can be called without having to include the entire path.
 
 Where namespacing really shines, is when there is a duplicate name for something, and you want to be clear about which particular rendition you are referring to.
 
 By having the `use` keyword, along with the virtual path (that leads to the file containing the specific redundant word) you are now capable of setting that specific version to work on your file:
 
-```
+<code>
 <?php
 // this file is called PrintedPage.php
 
-namespace BAM\OOPExampleSite\Page;
+namespace PHP\OOPExampleSite\Page;
 
-use BAM\OOPExampleSite\Page;
+use PHP\OOPExampleSite\Page;
 
 require_once __DIR__ . '/Page.php';
 
@@ -279,30 +279,30 @@ class PrintedPage extends Page {
   }
 
 ?>
-```
+</code>
 
-The first line: `namespace BAM\OOPExampleSite\Page;` is a sub-directory that contains the current class `PrintedPage`. The second line `use BAM\OOPExampleSite\Page;` is actually a reference to the parent `class Page`, which is being extended by `PrintedPage`. So if we were to go to the file where `class Page` resides, we would simply see this at the top: 
-`namespace BAM\OOPExampleSite;`
+The first line: `namespace PHP\OOPExampleSite\Page;` is a sub-directory that contains the current class `PrintedPage`. The second line `use PHP\OOPExampleSite\Page;` is actually a reference to the parent `class Page`, which is being extended by `PrintedPage`. So if we were to go to the file where `class Page` resides, we would simply see this at the top: 
+`namespace PHP\OOPExampleSite;`
 
 The reason why we are using:
 
 ```
-namespace BAM\OOPExampleSite\Page;
+namespace PHP\OOPExampleSite\Page;
 
-use BAM\OOPExampleSite\Page;
+use PHP\OOPExampleSite\Page;
 ```
 
 On the file above, is because if we didn't, we would get an error thrown back at us:
 
-`Fatal error: Class 'BAM\OOPExampleSite\Page\Page' not found in /app/lib/PrintedPage.php`
+`Fatal error: Class 'PHP\OOPExampleSite\Page\Page' not found in /app/lib/PrintedPage.php`
 
-It would believe that it needs to find a file `Page` inside a directory called `Page`. Instead we use the file `Page` that contains the extended class at path `BAM\OOPExampleSite`. While at the same time we have **CREATED** a virtual folder called `Page`, which contains the file above (called `PrintedPage.php`). Take note that it also in a sense makes the class itself like a directory too. Because if it's referenced simply **by name**, like it is in `PrintedPage.php`, then it's associating the `Page` class as a directory to its methods.
+It would believe that it needs to find a file `Page` inside a directory called `Page`. Instead we use the file `Page` that contains the extended class at path `PHP\OOPExampleSite`. While at the same time we have **CREATED** a virtual folder called `Page`, which contains the file above (called `PrintedPage.php`). Take note that it also in a sense makes the class itself like a directory too. Because if it's referenced simply **by name**, like it is in `PrintedPage.php`, then it's associating the `Page` class as a directory to its methods.
 
 There's also one more neat way to show you how to handle same word conflicts:
 
 ```
 use ThirdParty\Utilities\Validator as OtherValidator;
-use BAM\OOPExampleSite\Validator;
+use PHP\OOPExampleSite\Validator;
 
 //some code....
 
@@ -322,7 +322,7 @@ What you can do is create a *pseudonym* for one of those classes, which in turn 
 
 So by using the `as` keyword for `use ThirdParty\Utilities\Validator as OtherValidator;`, you can then call the pseudonym class along with the other same word class in order to use both of them. And here we can use `OtherValidator` in order to use the third-party validator without conflict, and then a regular `Validator` that comes from the basic path: 
 
-`use BAM\OOPExampleSite\Validator;`
+`use PHP\OOPExampleSite\Validator;`
 
 The best part is that we don't have to edit our third-party files at all in order to be able to use this other name. This as you can imagine is handy when you need to use an outside library, that has a possible name conflict to code you already have created in your application.
 
@@ -350,8 +350,8 @@ function my_autoloader($namespace)
 // Autoloads the function described above.
 spl_autoload_register('my_autoloader');
 
-use BAM\OOPExampleSite\Builder;
-use BAM\OOPExampleSite\ContactUsController;
+use PHP\OOPExampleSite\Builder;
+use PHP\OOPExampleSite\ContactUsController;
 
 
 // Instantiate a Builder object to use below.
@@ -370,7 +370,7 @@ So what this means for the example above, is that once it hits the `spl_autoload
 
 `$builder = new Builder();`
 
-As a result it recognizes that `Builder` is a name which is being `use`(d). So it goes ahead and takes a look at `function my_autoloader($namespace)` which was autoloaded, and replaces the `$namespace` variable with: `BAM\OOPExampleSite\Builder`.
+As a result it recognizes that `Builder` is a name which is being `use`(d). So it goes ahead and takes a look at `function my_autoloader($namespace)` which was autoloaded, and replaces the `$namespace` variable with: `PHP\OOPExampleSite\Builder`.
 
 Using the `explode()` function, it separates the string paths into array values, and then with the `end()` function, it grabs the last value of that array (which is the name of the class) in order to dynamically set the included path of the class into that file.
 
