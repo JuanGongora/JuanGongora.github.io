@@ -254,8 +254,7 @@ Where namespacing really shines, is when there is a duplicate name for something
 
 By having the `use` keyword, along with the virtual path (that leads to the file containing the specific redundant word) you are now capable of setting that specific version to work on your file:
 
-<code>
-<?php
+```
 // this file is called PrintedPage.php
 
 namespace PHP\OOPExampleSite\Page;
@@ -277,9 +276,7 @@ class PrintedPage extends Page {
         </body>
       </html>';
   }
-
-?>
-</code>
+```
 
 The first line: `namespace PHP\OOPExampleSite\Page;` is a sub-directory that contains the current class `PrintedPage`. The second line `use PHP\OOPExampleSite\Page;` is actually a reference to the parent `class Page`, which is being extended by `PrintedPage`. So if we were to go to the file where `class Page` resides, we would simply see this at the top: 
 `namespace PHP\OOPExampleSite;`
