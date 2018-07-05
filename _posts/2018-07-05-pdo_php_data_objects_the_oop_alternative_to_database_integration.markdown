@@ -17,16 +17,20 @@ Also, working with prepared statements is much easier as you can have named plac
 
 ```
 <?php
+
 /* Execute a prepared statement by binding PHP variables */
+
 $calories = 150;
 $color = 'red';
+
 $sth = $dbh->prepare('SELECT name, color, calories
     FROM fruit
     WHERE calories < :calories AND color = :color');
+		
 $sth->bindValue(':calories', $calories, PDO::PARAM_INT);
 $sth->bindValue(':color', $color, PDO::PARAM_STR);
+
 $sth->execute();
-?>
 ```
 
 To learn the full stack check the glossary for [PDO](http://php.net/manual/en/book.pdo.php).
@@ -45,8 +49,8 @@ class Database {
         $db_pass = "pass";
 
         $dsn = "mysql:host=" .$db_host . ";dbname=" . $db_name . ";charset=utf8";
-				
-				return $conn = new PDO($dsn, $db_user, $db_pass);
+
+        return $conn = new PDO($dsn, $db_user, $db_pass);
     }
 
 }
