@@ -1,7 +1,7 @@
 ---
 layout: post
 title:      "PDO (PHP Data Objects) the OOP alternative to database integration"
-date:       2018-07-05 18:35:15 +0000
+date:       2018-07-05 14:35:16 -0400
 permalink:  pdo_php_data_objects_the_oop_alternative_to_database_integration
 ---
 
@@ -45,6 +45,8 @@ class Database {
         $db_pass = "pass";
 
         $dsn = "mysql:host=" .$db_host . ";dbname=" . $db_name . ";charset=utf8";
+				
+				return $conn = new PDO($dsn, $db_user, $db_pass);
     }
 
 }
@@ -52,7 +54,7 @@ class Database {
 
 We then create a PDO object that is passed the `$dsn` property, along with the other variables to then return its final value:
 
-`return $link = new PDO($dsn, $db_user, $db_pass);`
+`return $conn = new PDO($dsn, $db_user, $db_pass);`
 
 After we have done this we can begin the first stage to manipulate the database:
 
