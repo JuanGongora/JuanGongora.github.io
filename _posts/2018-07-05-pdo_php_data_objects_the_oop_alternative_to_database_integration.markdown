@@ -71,7 +71,7 @@ $sql = "SELECT * FROM article ORDER BY published_at";
 $result = $link->query($sql);
 ```
 
-Here we made a `$result` property that uses the `$link` variable (which contains the DBO class) to access its built in method `query`. This executes an SQL statement, that then returns a resulting set as a PDO statement object.
+Here we made a `$result` property that uses the `$link` variable (which contains the PDO class) to access its built in method `query`. This executes an SQL statement, that then returns a resulting set as a PDO statement object.
 
 After you have done an attempted connection, it's good practice to test whether or not it was successful. If not, then you should output what the error was to find out how to resolve it:
 
