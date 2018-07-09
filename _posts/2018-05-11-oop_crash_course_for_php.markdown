@@ -199,7 +199,7 @@ So, whereas with an interface, we had to duplicate the `build`, as well as `them
 
 But we also have the advantage of telling the classes that will inherit from it specific things that they do need to do in order to behave in the way that we expect.
 
-<center>**Public/Private/Protected**</center>
+<center><strong>Public/Private/Protected</strong></center>
 
 Going back to the public variable that was discussed earlier, a class is also capable of storing private variables:
 `private $settings; `
@@ -215,7 +215,7 @@ It would not be called by an instance, and would not be inherited by a class tha
 
 The only one that does make a pointed difference are static variables. Whereas a static function is called and inherited by classes only, a static variable simply retains its value across calling and inheritance, unless it's intentionally changed.
 
-<center>**Object Oriented Guidelines**</center>
+<center><strong>Object Oriented Guidelines</strong></center>
 
 For the sake of organization, it's common practice to have classes that contain methods which are relevant to their operations. If this is not the case, then it's prudent to separate those non equivalent methods into their own classes.
 
@@ -250,13 +250,14 @@ public function build() {
 }
 ```
 
-But by simply having the snippet` namespace PHP\OOPExampleSite;`, it's already assuming that `Builder` is related to that namespace, so it can be called without having to include the entire path.
+But by simply having the snippet `namespace PHP\OOPExampleSite;`, it's already assuming that `Builder` is related to that namespace, so it can be called without having to include the entire path.
 
 Where namespacing really shines, is when there is a duplicate name for something, and you want to be clear about which particular rendition you are referring to.
 
 By having the `use` keyword, along with the virtual path (that leads to the file containing the specific redundant word) you are now capable of setting that specific version to work on your file:
 
-<code>
+
+```
 <?php
 // this file is called PrintedPage.php
 
@@ -281,7 +282,8 @@ class PrintedPage extends Page {
   }
 
 ?>
-</code>
+```
+
 
 The first line: `namespace PHP\OOPExampleSite\Page;` is a sub-directory that contains the current class `PrintedPage`. The second line `use PHP\OOPExampleSite\Page;` is actually a reference to the parent `class Page`, which is being extended by `PrintedPage`. So if we were to go to the file where `class Page` resides, we would simply see this at the top: 
 `namespace PHP\OOPExampleSite;`
