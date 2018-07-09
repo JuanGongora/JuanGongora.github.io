@@ -258,7 +258,6 @@ By having the `use` keyword, along with the virtual path (that leads to the file
 
 
 ```
-<?php
 // this file is called PrintedPage.php
 
 namespace PHP\OOPExampleSite\Page;
@@ -281,7 +280,6 @@ class PrintedPage extends Page {
       </html>';
   }
 
-?>
 ```
 
 
