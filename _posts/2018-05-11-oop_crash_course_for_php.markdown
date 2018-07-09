@@ -67,9 +67,9 @@ function __construct($options) {
 }
 ```
 
-So here the variable `$this` is capable of being referenced to the other methods in the class. `$this` is the private variable (which references the particular instance of the class that's currently being worked on, or rather, being instantiated by the constructor; think of 'self'). 
+So here the variable `$this` is capable of being referenced to the other methods in the class. `$this` is the private variable (which references the particular instance of the class that's currently being worked on, or rather, being instantiated by the constructor; think of 'self'). It is mentioned as a private variable because it is referencing its instantiated *self*. You couldn't for example declare that `$this` was the same as another `$this`, when called from two different instances, as they only pertain to their own existence.
 
-And here, `options` is just a variable that is put at that current state, but it then becomes a **property** of the class when we establish it here to the private variable. So for this instance of the class (referred to as 'self' or `$this`), we're going to pass it some `options` and then we're going to set those parameters as a property within the class which we can then reference anywhere else.  
+And here, `options` is just a variable that is put at that current state of declaration, but it then becomes a **property** of the class instance when we establish it here to the private variable. So for this instance of the class (referred to as 'self' or `$this`), we're going to pass it some `options` and then we're going to set those parameters as a property within the class which we can then reference.  
 
 Notice that when you establish the **property** you don't use a dollar sign like you would for a traditional variable: `options`.
 
@@ -81,9 +81,9 @@ This will in turn make it a little bit easier to reference them later on, so we 
 
 At the end of the `__construct` method, we're creating a new **property** for the class called `path`, but we're establishing it the same way as `options`. Which could also have the potential to become a public variable: `public $path;`.
 
-To further iterate, `$this` is using the **object operator**(`->`) to call other functions (methods) that are already present in the class, while being inside of the functions/methods. And in the case above, they are instantiated methods to the constructor.
+To further iterate, `$this` is using the **object operator**(`->`) to call other functions (methods), or public variables that are already present in the class, while being inside of the functions/methods. And in the case above, they are instantiated into the constructor.
 
-To summarize, `class Crud` has an added property here of a `var $options = array();` which is the same as a variable, and it exists within a class that has methods, which are the same as functions, including a constructor method in this case:
+To summarize, `class Crud` has an added property here of a `public $options = array();` which is the same as a variable, and it exists within a class that has methods, which are the same as functions, including a constructor method in this case:
 
 `function __construct($options) {}`
 
@@ -199,21 +199,23 @@ So, whereas with an interface, we had to duplicate the `build`, as well as `them
 
 But we also have the advantage of telling the classes that will inherit from it specific things that they do need to do in order to behave in the way that we expect.
 
-**Public/Private/Protected**
+<center>**Public/Private/Protected**</center>
 
 Going back to the public variable that was discussed earlier, a class is also capable of storing private variables:
 `private $settings; `
 
 These have the restriction of not being able to be called by instances of the class, as well as be accessed by any classes that inherit from it. Basically, it's something that is only active within the class that it resides in and nowhere else.
 
-There are also *Protected* variables, which can't be accessed by instances that are created by the class. Which does make it less strict than a private variable:
+There are also *Protected* variables, which can't be accessed by instances that are created by the class. But are able to be called by the class or classes that inherit from this base class. Which does make it less strict than a private variable:
 `protected $settings;`
 
 Take note that public, private, and protected can also be used on methods. It is not reserved for just variables. They function in the same terms as were described above for variables. To give an example, if a method was private: `private function submit() {}`
 
 It would not be called by an instance, and would not be inherited by a class that was extending it. It would basically be a method that is only called internally within the class, by either a method that was referencing it, or by a class variable that was assigned to reference it. Otherwise, the user is not capable of calling this private method independently.
 
-**Object Oriented Guidelines**
+The only one that does make a pointed difference are static variables. Whereas a static function is called and inherited by classes only, a static variable simply retains its value across calling and inheritance, unless it's intentionally changed.
+
+<center>**Object Oriented Guidelines**</center>
 
 For the sake of organization, it's common practice to have classes that contain methods which are relevant to their operations. If this is not the case, then it's prudent to separate those non equivalent methods into their own classes.
 
@@ -254,9 +256,9 @@ Where namespacing really shines, is when there is a duplicate name for something
 
 By having the `use` keyword, along with the virtual path (that leads to the file containing the specific redundant word) you are now capable of setting that specific version to work on your file:
 
-
-```
-// this code is in a file called PrintedPage.php
+<code>
+<?php
+// this file is called PrintedPage.php
 
 namespace PHP\OOPExampleSite\Page;
 
@@ -277,7 +279,9 @@ class PrintedPage extends Page {
         </body>
       </html>';
   }
-```
+
+?>
+</code>
 
 The first line: `namespace PHP\OOPExampleSite\Page;` is a sub-directory that contains the current class `PrintedPage`. The second line `use PHP\OOPExampleSite\Page;` is actually a reference to the parent `class Page`, which is being extended by `PrintedPage`. So if we were to go to the file where `class Page` resides, we would simply see this at the top: 
 `namespace PHP\OOPExampleSite;`
