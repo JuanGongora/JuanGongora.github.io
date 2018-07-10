@@ -111,7 +111,7 @@ $stmt = $link->prepare($sql);
 $stmt->bindValue(":id", $id, PDO::PARAM_INT);
 ```
 
-`:id` is now inserted to be replaced by the active value of the argument. We then create a statement that uses the PDO object method `prepare` in order to... that's right, *prepare a (SQL) statement* for execution and return that statement object.
+`:id` is now inserted to be replaced by the active value of the argument. We then create a statement that uses the PDO object method `prepare` in order to... that's right, *prepare a (SQL) statement* for execution and return that statement object. The `prepare` method caches the statement, and allows for multiple named parameters (`:id` in this case) to be set, all while preventing SQL injection attacks.
 
 Following that generated statement object within `$stmt`, we then use the PDO object method `bindValue` to bind the `":id"` string into a value that will come from the passed in `$id` variable. At the same time we also make sure that whatever is currently assigned to `$id`, is an integer parameter (checked by the data type constant `PDO::PARAM_INT`).
 
