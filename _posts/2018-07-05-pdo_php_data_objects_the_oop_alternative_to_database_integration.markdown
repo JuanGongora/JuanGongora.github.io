@@ -115,7 +115,7 @@ $stmt->bindValue(":id", $id, PDO::PARAM_INT);
 
 Following that generated statement object within `$stmt`, we then use the PDO object method `bindValue` to bind the `":id"` string into a value that will come from the passed in `$id` variable. At the same time we also make sure that whatever is currently assigned to `$id`, is an integer parameter (checked by the data type constant `PDO::PARAM_INT`).
 
-Now that we have bound the values we can check to see if the `$stmt` variable is executable, meaning that it's able to run, with the PDO object method `execute` (note that we can use execute on its own to process a SQL statement to the database, but here we are just looking for a true or false, since we want to return fetched content, not insert content).
+Now that we have bound the values we can check to see if the `$stmt` variable is executable, meaning that it's able to run, with the PDO object method `execute` (note that we can use execute on its own to process a SQL statement to the database, but here we are just looking for a true or false, since we want to return fetched content).
 
 ```
 if ($stmt->execute()) {
