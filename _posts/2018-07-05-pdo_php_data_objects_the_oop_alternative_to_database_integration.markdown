@@ -11,7 +11,7 @@ As the PHP docs put it:
 
 > The PDO extension defines a lightweight, consistent interface for accessing databases in PHP. Each database driver that implements the PDO interface can expose database-specific features as regular extension functions. Note that you cannot perform any database functions using the PDO extension by itself; you must use a database-specific PDO driver to access a database server.
 
-You will see however, that PDO is compatible with various database management systems ([check out the drivers](http://php.net/manual/en/pdo.drivers.php)), and they all share the same code type.
+You will see however, that PDO is compatible with various database management systems ([check out the drivers](http://php.net/manual/en/pdo.drivers.php)), and they all share the same code format.
 
 Also, working with prepared statements is much easier as you can have named placeholders (`:calories`) instead of just question marks (`?`).
 
