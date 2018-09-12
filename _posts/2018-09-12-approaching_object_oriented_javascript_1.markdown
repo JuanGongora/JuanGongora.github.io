@@ -1,7 +1,7 @@
 ---
 layout: post
 title:      "Approaching Object Oriented JavaScript (§ 1)"
-date:       2018-09-12 19:12:06 +0000
+date:       2018-09-12 15:12:07 -0400
 permalink:  approaching_object_oriented_javascript_1
 ---
 
@@ -212,7 +212,7 @@ var cart = {
 cart.subtotal(); // subtotal called for Juan
 ```
 
-Notice how the returned value for customer was `Juan`. This was a result of assigning the receiver '`this`' to the property called `customer`. If I had instead coded the string inside `console.log` without using the 'this' keyword, JS would have then thought that I was referring to a global variable called `customer`. However, because the object `cart` does contain a property called customer, I am able to refer to itself by assigning '`this`' as the reciever of `customer`.
+Notice how the returned value for customer was `Juan`. This was a result of assigning the receiver '`this`' to the property called `customer`. If I had instead coded the string inside `console.log` without using the '`this`' keyword, JS would have then thought that I was referring to a global variable called `customer`. However, because the object `cart` does contain a property called customer, I am able to refer to itself by assigning '`this`' as the reciever of `customer`.
                                                                                             
 Now what would happen if I was to reference the function `subtotal` (from the `cart` object), into another, unrelated object?
 
@@ -332,7 +332,7 @@ cart4.total(); // TypeError: this.getTax is not a function
 
 For this example, I have created the property `total`, which contains a function with an inner function named `getTax()`. When I check for `subtotal()` I get no problem. However, when I try and call the property `total()` I receive an error instead. It indicates that `this.getTax` isn't a function. Why is that?
 
-In JavaScript, variables normally have function scope, so a variable declared in the total() function would be considered available to enter functions such as `getTax()`. Given that this is the case, then the variable '`this`' should also be available inside of `total()` as well as in `getTax()`.
+In JavaScript, variables normally have function scope, so a variable declared in the `total()` function would be considered available to enter functions such as `getTax()`. Given that this is the case, then the variable '`this`' should also be available inside of `total()` as well as in `getTax()`.
 
 But in this case, '`this`' is not the object `cart4` inside of `getTax()`, but is instead a global object. This occured the moment that it became an inner function of `total()`: it then jumped into a seperate scope from the initial object, `cart4`. And since the global object has no method `subtotal` and no property `taxrate` you get an error because JavaScript doesn't know how to invoke the `getTax` function.
 
@@ -441,27 +441,28 @@ As a result, I now have my `FarewellBot` welcoming me. You can really start to s
 console.log(hello.speak.apply(goodbye, ['Susan'])); // FarewellBot says "welcome, Susan."
 
 console.log(goodbye.speak.apply(hello, ['Susan'])); // WelcomeBot says "Goodbye, Susan."
-
+```
 Now let's say we just wanted to pass the speak method around, and use it as a function:
 
+```
 var speak = hello.speak;
 
 console.log(speak('Billy')); // undefined says "welcome, Billy."
 ```
 
-Even though I pulled the speak method from the hello object, when I saved it into a variable, I immediately lost its binding to the object it came from. Which results on an undefined value.
+Even though I pulled the speak method from the `hello` object, when I saved it into a variable, I immediately lost its binding to the object it came from. Which results in an *undefined* value.
 
 Fortunately, I can use the `call` method to get the functionality back on track:
 
 `console.log(speak.call(hello, 'Billy')); // WelcomeBot says "welcome, Billy.`
 
-This manages to invoke the function against the hello object, even though I only have the variable speak pointing to the function; instead of calling it against an object (as was done in the earlier examples).
+This manages to invoke the function against the `hello` object, even though I only have the variable `speak` pointing to the function; instead of calling it against an object (as was done in the earlier examples).
 
 I can also invoke functions as methods of objects that are created right on the spot:
 
 `console.log(hello.speak.call({name: 'AnotherGreetingBot'}, 'Rob')); // AnotherGreetingBot says "welcome, Rob.`
 
-Again, you really start to see the flexibility of being able to invoke functions with the call and apply methods. You can create objects on the fly and invoke methods from other objects.
+Again, you really start to see the flexibility of being able to invoke functions with the `call` and `apply` methods. You can create objects on the fly and invoke methods from other objects.
 
 One common use of JavaScript's ability to change what '`this`' is bound to, is by doing the same operation to a group of simultaneous objects.
 
@@ -484,7 +485,7 @@ for(var i = 0; i < robots.length; i++) {
 }
 ```
 
-Using this for loop, I'm invoking the `numberRobot` function as if it were a method on each existing robot object. First by binding '`this`' to the result of the index in the variable `robots` (which contains the robot objects), thanks to using the `call` method, and then setting the numerical argument of `numberRobot` in relation to the iterator count.
+Using this for loop, I'm invoking the `numberRobot` function as if it were a method on each existing robot object. First by binding '`this`' to the result of the index in the variable `robots` (which contains the robot objects), thanks to using the `call` method. And then setting the numerical argument of `numberRobot` in relation to the iterator count.
 
 And now to see the results of the number property, within these robot objects:
 
@@ -500,7 +501,7 @@ I've essentially created a method without attaching it to any objects. Weirder s
 
 Using the `bind` method is another way to deal with the problem of invoking methods, when you can't call them against the object they belong to right away. It allows you to permanently bind a specific '`this`' value to a function, making the function always be invoked as a method no matter where or how it's called. 
 
-Normally if I were to save a reference to a method and then invoke it, it won't be called in the context of the original object, as I previously showed with the variable speak:
+Normally if I were to save a reference to a method and then invoke it, it won't be called in the context of the original object; as I previously showed with the variable speak:
 
 ```
 var speak = hello.speak;
@@ -511,7 +512,7 @@ console.log(speak('Josh')); // undefined says "welcome, Josh."
 However, if I revise the `speak` variable to use the `bind` method, it will recognize the original state of the `hello` object:
 
 ```
-speak = hello.speak.bind(hello);
+var speak = hello.speak.bind(hello);
 
 console.log(speak('Josh')); // WelcomeBot says "welcome, Josh."
 ```
@@ -520,12 +521,12 @@ Note that even if I use the `call` method on `speak`, in order to point to anoth
 
 `console.log(speak.call(goodbye, 'Josh')); // WelcomeBot says "welcome, Josh."`
 
-That's because once a function has been bound, it can't be modified even by the methods `call` or `apply`. So you could say that binding takes precedence over them.
+That's because once a function has been *bound*, it can't be modified even by the methods `call` or `apply`. So you could say that binding takes precedence over them.
 
 Bind can also be especially useful with callbacks:
 
 ```
-// revised speak to exclude the binding again for this example below
+// revised speak variable to exclude the binding again for this example below
 
 var speak = hello.speak;
 
@@ -538,7 +539,7 @@ setTimeout(function () { console.log( speak('Josh') ) }, 2000); // undefined say
 setTimeout(function () { console.log( speak.bind(hello, 'Josh')() ) }, 2000); // WelcomeBot says "welcome, Josh."
 ```
 
-A word of caution however, you should be careful when using the `bind` method, as a bound function will not allow the '`this`' argument to be modified with `call` or `apply`.
+A word of caution however, you should be careful when using the `bind` method, as a bound function will not allow the '`this`' argument to be modified even with `call` or `apply`.
 
 > Stay tuned for Approaching Object Oriented JavaScript (§ 2)
 > 
