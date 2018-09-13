@@ -286,7 +286,7 @@ var cart3 = {
 cart3.total(); // Billy's subtotal is $28.75
 ```
 
-Let's say I wanted to dynamically access either total or price depending on where I was at a checkout process, and at the very end of the transaction, there would be a variable called `finalStep` that was set to `true`:
+Let's say I wanted to dynamically access either `total` or `price` depending on where I was at a checkout process, and at the very end of the transaction, there would be a variable called `finalStep` that was set to `true`:
 
 `var finalStep = true;`
 
@@ -296,9 +296,9 @@ I can then dynamically figure out which function or property name I want to use 
 
 So since `finalStep` is true, `methodName` should simply output a string referring to total:
 
-`console.log(methodName); // just returns a string 'total' as it's an unassociated variable`
+`console.log(methodName); // just returns a string 'total' as it's an unassociated value`
 
-Now if I call `cart3` with square brackets using the `methodName` as a reference, it will recognize the output to be an exsisting function within itself:
+Now if I call `cart3` with square brackets using the `methodName` as a reference, it will recognize the output to be an existing function within itself:
 
 `console.log(cart3[methodName]); // returns [Function: total] because it recognizes that total is a function of cart3`
 
@@ -353,7 +353,7 @@ After replacing the reference to `self` within the `getTax()` function, I'll now
 
 `return this.subtotal() + getTax();`
 
-The reason being that `getTax()` is not a directly related function to the object `cart4`, but is rather a function within the scope of the property function `total()`. Here's the the full working revision:
+The reason being that `getTax()` is not a directly related function to the object `cart4`, but is rather a function within the scope of the property function `total()`. Here's the full working revision:
 
 ```
 var cart4 = {
