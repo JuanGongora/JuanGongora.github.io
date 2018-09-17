@@ -19,7 +19,9 @@ permalink:  approaching_object_oriented_javascript_1
 > 1. Using call and apply
 > 1. Binding
 
-By far JavaScript is one of the most oddly associated languages to object orientation that I have recently dealt with. Some of the things that make up its OOP logic in comparison to Ruby or PHP (which are languages I frequently use) are pretty out there. That is not to say that it isn't illogical however. At the very least, it has peaked my curiosity for comprehension. Thus I have conglomerated this introductory OOP guide into the inner fabric of JavaScript, so that it can retain my referenced sanity (and hopefully yours too!). To start it off let's make a comparison list:
+By far JavaScript is one of the most oddly associated languages to object orientation that I have recently dealt with. Some of the things that make up its OOP logic in comparison to Ruby or PHP (which are languages I frequently use) are pretty out there. That is not to say that it isn't illogical however. At the very least, it has peaked my curiosity for comprehension. Thus I have conglomerated this introductory OOP guide into the inner fabric of JavaScript, so that it can retain my referenced sanity (and hopefully yours too!).
+
+To start it off, let's have a comparison list:
 
 **How Javascript differs from other OOP languages**
 
