@@ -503,7 +503,7 @@ I've essentially created a method without attaching it to any objects. Weirder s
 
 Using the `bind` method is another way to deal with the problem of invoking methods, when you can't call them against the object they belong to right away. It allows you to permanently bind a specific '`this`' value to a function, making the function always be invoked as a method no matter where or how it's called. 
 
-Normally if I were to save a reference to a method and then invoke it, it won't be called in the context of the original object; as I previously showed with the variable speak:
+Normally if I were to save a reference to a method and then invoke it, it won't be called in the context of the original object; as I previously showed with the variable `speak`:
 
 ```
 var speak = hello.speak;
