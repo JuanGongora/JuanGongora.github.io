@@ -1,7 +1,7 @@
 ---
 layout: post
 title:      "Approaching Object Oriented JavaScript (§ 2)"
-date:       2018-10-04 16:13:58 +0000
+date:       2018-10-04 12:13:59 -0400
 permalink:  approaching_object_oriented_javascript_2
 ---
 
@@ -20,9 +20,9 @@ permalink:  approaching_object_oriented_javascript_2
 
 In the [*previous installment*](http://imjuan.com/approaching_object_oriented_javascript_1) to this series, I went over ES5 related subjects on the introductory blueprint of a JavaScript object. There were various easy to follow discussions on properties and functions. As well as the different ways to interpret their uniquely contained information.
 
-**Function Scope**
+To refresh the memory a bit more to where we had left off, I was discussing the concept of an object's *self* (or `this` in the case of JS). Using its association to confer an object's relation, `this` helps us to know the current state of an object. This state, is by traditional OOP standards, found within a block based scope. JS likes to keep you on your toes however, since its scope is actually termed through functions instead.
 
-To refresh the memory of where we had left off, I was discussing the concept of an object's *self* (or `this` in the case of JS). Using its association to confer an object's relation, `this` helps us to know the current state of an object. This state, is by traditional OOP standards, found within a block based scope. JS likes to keep you on your toes however, since its scope is actually termed through functions instead.
+**Function Scope**
 
 So JavaScript variables have function scope; which differs from other OOP based languages where it's actually a block based scope. Let's make an example here:
 
