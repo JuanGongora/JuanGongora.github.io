@@ -85,7 +85,6 @@ You see however, that we get `undefined` for 1 and 2. The problem resides with t
 ```
 function scopeTest3() {
     // var msg;
-    'use strict';
     var msg = 'unlucky';  // the var here would be excluded as msg declaration is hoisted to top
     [1, 2, 3, 4, 5].forEach(function (n) {
         // var msg;
