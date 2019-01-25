@@ -1,7 +1,7 @@
 ---
 layout: post
 title:      "Approaching Object Oriented JavaScript (§ 3)"
-date:       2019-01-25 01:18:51 +0000
+date:       2019-01-24 20:18:52 -0500
 permalink:  approaching_object_oriented_javascript_3
 ---
 
@@ -26,7 +26,7 @@ In the [*last installment*](http://imjuan.com/approaching_object_oriented_javasc
 
 Since the previous topics already covered some good foundations on ES5, it's time to dive in to the useful upgrades that ES6 has brought with it. We had ended it with ES6 fat arrow functions, and how they can greatly simplify your syntax for annonymous functions. But there are even more useful and interesting things to discover, and I'll show you what those are right below!
 
-# Object Literal Syntax Tweaks
+**Object Literal Syntax Tweaks**
 
 With ES6, there have been some slight tweaks to object assignment. For one, an object is capable of picking up declared variables outside of its scope, as assignments:
 
@@ -75,7 +75,7 @@ obj['greet me'](); // Juan, MA
 
 I can still use dot notation as the string value state has no odd or spaced characters in it, and I can also call it through its original string form. Finally, I can then call it simply by its dynamic variable name (`stateField`), and when I use the function property `'greet me'`, I will still have it return for me the expected value.
 
-# Destructuring Assignment Syntax
+**Destructuring Assignment Syntax**
 
 ES6 brings with it a unique way to unpack values or properties, into their own distinct variables:
 
@@ -194,7 +194,7 @@ console.log(person); //Juan
 
 So now `name` still works because it refers to the property name of obj, and `person` also works because it's a new variable that's outside of the object scope. Calling `name` without the obj receiver doesn't work however, as `person` is the only known variable that once referenced the property `name`.
 
-# ES6 Inheritance
+**ES6 Inheritance**
 
 Going back to the design pattern of classes in ES6, something I didn't touch on was object inheritance modifications for super classes. Let's say that I wanted to add a new feature to the constructor of a child. To complement this feature, I have modified a method in the parent class that would respond to it:
 
@@ -294,7 +294,7 @@ What I've done here is remake the `eat` method in the child class, which now out
 
 If however, I wanted to still be able to call its parent method, then I can do so by associating the `super` keyword as the receiver to `eat()`. I've done this in the new method called `eatAgain()`. I log to the console both the parent method, and the new method by switching the receivers of eat(). super will call the parent method, while 'this' will call the current (child) method.
 
-# Static Methods
+**Static Methods**
 
 As someone who comes from an object oriented route, one would likely expect to see something familiar to class methods. After all, JavaScript has shown us that instance methods do already exist. That's where the keyword static comes in.
 
@@ -362,7 +362,7 @@ One thing to be aware of, when going through this example, is that because there
 
 The only way to make it valid, and not rely on declaring the variable as a global one like I did, is by putting that variable inside of the *constructor*, or by implementing various [hacks](https://stackoverflow.com/questions/22528967/es6-class-variable-alternatives) to make it possible.
 
-# Setters and Getters
+**Setters and Getters**
 
 A welcome introduction to ES6 is the possibility for traditional setters and getters, like in many other OOP languages. 
 
@@ -407,7 +407,7 @@ The naming convention when using setters and getters is to prefix the relatable 
 
 `console.log(mammal._name); // Bobby`
 
-# Subclassing Builtins
+**Subclassing Builtins**
 
 A very powerful feature that was introduced to ES6, is the ability to extend the already built in data structures of the language. As has been shown, JS allows the extension of our own custom classes. But the real power comes from innovating new features into *JS native objects*. Here's an example that adopts all the existing methods of the Array type object, but with an additional twist:
 
@@ -454,7 +454,7 @@ console.log(testingArray.alter().concat(regularArray));
 
 As you can see, the instance variable `testingArray` is still of the object type `Array`. That's because the class `ExtendedArray` is a child of the native object `Array`. What I've done here is make a hybrid class that is capable of implementing features that did not originally exist for that object type, while at the same time be capable of calling native methods, like concatenating regular arrays into this extended array.
 
-# Symbols
+**Symbols**
 
 Here's another feature to talk about from ES6. So symbols are basically a new primitive type, and even though they're not objects, I want to briefly discuss the logic behind them as they are great companions to objects. Now the major point of focus for symbols is that they provide unique identifiers. The interesting thing about them is that generally, you don't see the identifier itself. You only have the symbol, and not a key. When you're defining a symbol, it kind of looks like a class is being declared. But don't be fooled, there is no '`new`' keyword when declaring a symbol, it's still a primitive:
 
@@ -566,7 +566,7 @@ That's exactly what ends up happening, as the internal function that I assigned 
 
 If you'd like to see the full list of well-known symbols, visit [mozilla](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol#Well-known_symbols).
 
-# Object Assignment Methods
+**Object Assignment Methods**
 
 I want to show you an important object method that ES6 has brought to the table. It's called the *assign* method, and just like its name, its intention is to assign objects to variables during declaration. I'll start off with a simple example:
 
@@ -662,7 +662,7 @@ If you're curious as to why I didn't compare the prototype of `robot` to the pro
 
 Another interesting thing to recognize is that if I were to remove the property `name` from my `person` object, and I outputted the object to the console with the `name` argument appended to it, I'd get '`RoboCop`' returned to me. That's because JS can't find this `name` property on the object itself, therefore it moves up to its prototype, which does contain a property value of `name`; so it returns that as the default.
 
-# Sets
+**Sets**
 
 As you have gotten to notice by now, ES6 has brought with it some unique ways to store values for objects and primitives as well. One of them being the interesting object class *Set*.
 
@@ -748,7 +748,7 @@ weakset2.delete(obj3);
 console.log(weakset2.has(obj3)); // false
 ```
 
-# The Reflect API
+**The Reflect API**
 
 The Reflect API introduced by ES6 could be described as a collection, or “central place” which houses all kinds of objects and functions (for creation, property management etc.). Some of the functionalities added to the `Reflect` object were available before on the `Object` constructor. But the goal for the future is to have one central place to store all of those methods – the Reflect Object/API. Therefore, the Reflect API provides useful methods to create, manipulate and query objects and functions in your JavaScript project.
 
@@ -873,7 +873,7 @@ Of course class *Object* itself does also contain these prototype methods, as I 
 
 Having that kind of control can become handy when you want to be sure that you are indeed accessing the JS object that you were expecting, along with the appropriate behavior that you set for it.
 
-# The Proxy API
+**The Proxy API**
 
 The Proxy API allows you to wrap objects, functions, and handle incoming property accessing, function calls etc. You may think of Proxies as a filter which has to be passed into, and can be made to interrupt access on a wrapped element for additional content manipulation.
 
@@ -1014,7 +1014,7 @@ funcProxy(201); // File is worth 201mb, it's too large to upload
 
 Notice how I don't directly call the `apply` method on the proxy either, it's referenced on its own simply by the logic that I built on the handler. All it needs is an argument to be attached to the proxy as if it was a function call with a set parameter. This quickly shows us the easy to use capabilities of executing assigned functions, within a proxy object. It's a natural way to not only wrap objects and use traps to regulate logic, but it can also be used to make sure that function calls work the way you expect them to.
 
-# Proxy Revocable
+**Proxy Revocable**
 
 So far I've shown you default proxies, but there's another format for them called *revocable proxies*. That means that after you set up a proxy as a wrapper, you can remove added functionalities if you so desire. You can't however, make previous related code undone, but you can make sure that the proxy is no longer active after you call revoke.
 
@@ -1048,7 +1048,7 @@ typeof pet;                  // 'Cat', typeof doesn't trigger any trap
 
 As you can see, using the revoke feature can be handy for removing a proxy after a certain triggered event has occurred.
 
-# Wrapping Up
+**Wrapping Up**
 
 This guide covered all of the major stepping points in object oriented JavaScript. While it may have been a long and successive read (it was a long and studied write up for me too!) it will certainly give you a leg up compared to others when comprehending the more obscure fashions of OOP for this language. I personally know that I will be using this dearly written guide as a back and forth reference for when I may need a refresher; so as to remind myself just how different the roadmap is when taking a trip to (JS) object oriented land!
 
