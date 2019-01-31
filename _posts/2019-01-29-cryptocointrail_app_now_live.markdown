@@ -19,7 +19,7 @@ Last but certainly not least, I also formed a valuable chart trail for each coin
 
 This accurate data gathering is all possible by incorporating various APIs from the most well known big data companies in the crypto community, such as coinmarketcap and coingecko.
 
-It's also run on a very light weight app built from the ground up in [Sinatra](http://sinatrarb.com/), which is a concise framework based off of Ruby on Rails, but without the bloated dependency of multiple gems. It's extremely minimalistic, no unnecessary complexities. I also have it running on [Ngnix](https://www.nginx.com/) with [Phusion Passenger](https://www.phusionpassenger.com/), which is a system for preparing and launching instances of Ruby for use with Rack-based applications, all in a convenient package.
+It's also run on a very light weight app built from the ground up in [Sinatra](http://sinatrarb.com/), which is a concise framework based off of Ruby on Rails, but without the bloated dependency of multiple gems. It's extremely minimalistic, no unnecessary complexities. I also have it running on [Nginx](https://www.nginx.com/) with [Phusion Passenger](https://www.phusionpassenger.com/), which is a system for preparing and launching instances of Ruby for use with Rack-based applications, all in a convenient package.
 
 Now that you've had me blabbering long enough why don't you checkout [CryptoCoinTrail](https://cryptocointrail.com/)? It's completely free to use! Just sign up and you're all set to go!
 
