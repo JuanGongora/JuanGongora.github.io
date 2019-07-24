@@ -257,7 +257,7 @@ http {
 }
 ```
 
-If you're wondering what the `include mime.types` is, it allows you to have Nginx load different `content-type`s (css/html) to your site, in the correct format extension. This is actually a file provided by Nginx, which has a culmination of different file type extensions that you would perhaps use for your site. You may have noticed that I also kept the *events* context even though it's empty. This needs to be there for the configuration file to still be valid.
+If you're wondering what the `include mime.types` is, it allows you to have Nginx load different `content-type`s (css/html) to your site, in the correct format extension. `mime.types` is actually a file provided by Nginx, which has a culmination of different file type extensions that you would perhaps use for your site. You may have noticed that I also kept the *events* context even though it's empty. This needs to be there for the configuration file to still be valid.
 
 then type:
 
@@ -483,7 +483,7 @@ So there's a couple of things happening here. When a URI is rewritten, it also g
 
 There are two rewrites here. The first one stated that a path immediately followed by `user`, and then anything that has more than a one word character, will get encapsulated and transitioned into a new URI that starts with `greet`, and then outputs the first captured group `(\w+)` into the `$1` variable. This then becomes `149.28.58.225/greet/Juan`, and will go to the location path (`/greet`) outputting my name to the browser.
 
-The last flag declares that the URI should not be rewritten anymore. So even though there's another rewrite below the first one, declaring to get to `/thumb.png`, it will ignore this and instead go to the exact match argmuent (`location = /greet/admin`).
+The `last` flag declares that the URI should not be rewritten anymore. So even though there's another rewrite below the first one, declaring to get to `/thumb.png`, it will ignore this and instead go to the exact match argmuent (`location = /greet/admin`).
 
 **Try Files and Named Locations**
 
@@ -491,7 +491,7 @@ Another option that can be used are `try_files`. These can be inserted within th
 
 This means that when the URI for the root directory is requested, the try file will actually attempt to load the URI's listed instead. Parsing through one after the other if for some reason the prior URI on the list was not reachable. If it reaches its last argument however, it treats it as an internal rewrite (meaning it gets re-evaluated by Nginx as discussed earlier with rewrites).
 
-Traditionally, try_files are paired with Nginx variables. For example, to first check that the initial URI exists, you can start the list with the Nginx `$uri` variable:
+Traditionally, `try_files` are paired with Nginx variables. For example, to first check that the initial URI exists, you can start the list with the Nginx `$uri` variable:
 
 `try_files $uri /thumb.png /greet;`
 
@@ -566,7 +566,7 @@ http {
 
 The example above makes it so that when a user gets into the `/admin` URI route, it will log the connection to the `admin.access.log` file, which if not previously existing, will be created on the fly when routed. There is also the disabling of general access logs right below it, which is commented out, but can help to reduce saved data traffic to just the chosen log right above it; thus allowing you to prevent exceeded repetition of logged entries.
 
-You can ofcourse format even more complex logging configurations than the sample above, but for the sake of brevity, I'll [supply you with a learning resource](https://docs.nginx.com/nginx/admin-guide/monitoring/logging/) that goes more into this.
+You can of course format even more complex logging configurations than the sample above, but for the sake of brevity, I'll [supply you with a learning resource](https://docs.nginx.com/nginx/admin-guide/monitoring/logging/) that goes more into this.
 
 **Inheritance & Directive Types**
 
