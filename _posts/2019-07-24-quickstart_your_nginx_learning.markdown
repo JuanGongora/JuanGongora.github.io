@@ -1,11 +1,11 @@
 ---
 layout: post
 title:      "QuickStart your Nginx Learning"
-date:       2019-07-24 15:43:14 +0000
+date:       2019-07-24 11:43:15 -0400
 permalink:  quickstart_your_nginx_learning
 ---
 
-<img src="https://i.imgur.com/yOilcIml.jpg" title="Nginx variables at work" />
+<img src="https://i.imgur.com/7fMzHJQl.jpg" title="Nginx variables at work" />
 
 So... I'm sure that you've most likely read or heard that Nginx is faster than Apache. After all, one of Nginx's core development focuses was on improved performance. but it's really important to define what's meant by fast. Nginx can't magically deliver content to the client any faster than the internet connection will allow. But it can serve static resources much faster than Apache, and it can handle a much larger number of concurrent requests. Nginx can serve static resources without the need to involve any server side languages. And this gives quite an advantage over Apache (especially if you work with a [SPA](https://en.wikipedia.org/wiki/Single-page_application) framework). And as for handling concurrent requests, Nginx can potentially receive thousands of requests on a single processing thread, and respond to them as fast as it can without turning down any of those requests. Apache on the other hand will accept requests only up to the pre-configured number, and then simply reject the rest.
 
@@ -17,7 +17,7 @@ Well good reader, I'm currently working with a full-stack JavaScript application
 
 **Building Nginx from Source**
 
-To start things off I'm going to install Nginx on a remote server, but without using *package managers*, as those are really only used for quick and simple set ups. Nginx, as you'll soon see has the power of custom modules, which can provide useful solutions to various edge cases. But, these are only bundled together when you build from source. Well enough of that! First let's get the appropriate download link which can be found here: http://nginx.org/en/download.html
+To start things off I'm going to install Nginx on a remote server, but without using *package managers*, as those are really only used for quick and simple set ups. Nginx, as you'll soon see has the power of custom modules, which can provide useful solutions to various edge cases. But, these are only bundled together when you build from source. Well enough of that! First let's get the appropriate download link which can be found [here](http://nginx.org/en/download.html).
 
 Once you have gone to that site, copy the url link of the *Mainline version* for your appropriate machine. For my instance, I'm using Ubuntu 16.
 
@@ -142,10 +142,10 @@ Finally, check that the process is indeed running with:
 
 > ------extra tip
 > 
-> configure flags tell you what you customized in terms of settings for Nginx. If you want to apply modules to your configuration, you can see what's available with ./configure --help. Take note that if you flag in the configuration where your .conf files will be located (--conf-path=/etc/nginx/nginx.conf) then you should also set where the added module paths need to be as well, since the default path would no longer be valid (set it to --modules-path=/etc/nginx/modules).
+> configure flags tell you what you customized in terms of settings for Nginx. If you want to apply modules to your configuration, you can see what's available with `./configure --help`. Take note that if you flag in the configuration where your .conf files will be located (`--conf-path=/etc/nginx/nginx.conf`) then you should also set where the added module paths need to be as well, since the default path would no longer be valid (set it to` --modules-path=/etc/nginx/modules`).
 > 
 > 
-> To then apply custom modules, you will need to have them be loaded within your .conf file with the string load_module /etc/nginx/modules/name-of-module.so. Also take note about reading what sort of parameters a custom module can set under the Modules reference listing here: http://nginx.org/en/docs/
+> To then apply custom modules, you will need to have them be loaded within your .conf file with the string `load_module /etc/nginx/modules/name-of-module.so`. Also take note about reading what sort of parameters a custom module can set under the Modules reference listing [here](http://nginx.org/en/docs/).
 > 
 > ------extra tip
 
@@ -157,7 +157,7 @@ First, let's send a signal to stop Nginx:
 
 `nginx -s stop`
 
-Now to enable `systemd` we'll have to add a small script, which will be the same across all operating systems. You can find the template systemd service file example here: https://www.nginx.com/resources/wiki/start/topics/examples/systemd/
+Now to enable `systemd` we'll have to add a small script, which will be the same across all operating systems. You can find the template systemd service file example [here](https://www.nginx.com/resources/wiki/start/topics/examples/systemd/).
 
 You'll need to be inside the Nginx folder to create the file in the described location in the link, to then paste the coded template:
 
@@ -666,7 +666,7 @@ When you enter `systemctl status nginx`, you see that there are within the `CGro
 > 
 > ------Debugging tips (Ubuntu)
 
-worker_processes is set outside of any context blocks within your .conf file. Take note that spawning more workers doesn't necesarrily mean that it will convert to better performance. Since the processors are asynchronous, they already operate to the most that the hardware they are running on can do. What you want to do instead, is separate the worker logic to alternate cores, if the server you are running it on has more than one.
+`worker_processes` is set outside of any context blocks within your .conf file. Take note that spawning more workers doesn't necesarrily mean that it will convert to better performance. Since the processors are asynchronous, they already operate to the most that the hardware they are running on can do. What you want to do instead, is separate the worker logic to alternate cores, if the server you are running it on has more than one.
 
 This command will tell you how many core processors your server has:
 
@@ -813,13 +813,13 @@ With headers, they allow the client and the server to pass additional informatio
     }
 ```
 
-`Cache-Control public` tells the receiving client that this resource or response can be cached in any way. P`ragma public` does the same thing, but is based off of older versions, so it's a way to associate legacy terms. The next one, `Vary Accept-Encoding`, is essentially saying the response can vary based on the value of the request header `Accept-Encoding`. The last one which is expires, sets it to be an expiration time of one month (`1M`).
+`Cache-Control public` tells the receiving client that this resource or response can be cached in any way. `Pragma public` does the same thing, but is based off of older versions, so it's a way to associate legacy terms. The next one, `Vary Accept-Encoding`, is essentially saying the response can vary based on the value of the request header `Accept-Encoding`. The last one which is expires, sets it to be an expiration time of one month (`1M`).
 
 (To check and see these headers being registerd on your site, in your terminal, first reload nginx so it picks up your changes (`systemctl reload nginx`), then do `curl -I 149.28.58.225/thumb.png` (with your own i.p. instead).
 
 Another thing that can assist performance is compression. Meaning that when a client requests a resource, the client can indicate its ability to accept compressed data. So we can compress a response on the server, typically with `gzip`, reducing its file size. As a result it reduces the time taken for the client to receive that response. Which the client or browser in this case has the responsibility to decompress before rendering.
 
-For this, we would have to have the* gzip module* installed. This is not an issue however, as nginx core comes with that module already pre-installed. We then just need to set it:
+For this, we would have to have the gzip module installed. This is not an issue however, as Nginx core comes with that module already pre-installed. We then just need to set it:
 
 ```
 user www-data;
@@ -895,21 +895,21 @@ Content-Encoding: gzip
 
 We've mixed a good amount of content by now, and I think it will surely make you a better user of Nginx now that the fundamentals have been taught. There is of course, always more to learn if you seek it. For that very reason, I have supplied you with some additional topics/resources that I believe are also relevant and important to know down the line. So here they are!
 
-1. Enabling http2 for better data resource management is essential to browser speed nowadays, but in order to get there we need to set up an ssl certificate for your site! https://www.nginx.com/blog/using-free-ssltls-certificates-from-lets-encrypt-with-nginx/
+1. Enabling http2 for better data resource management is essential to browser speed nowadays, but in order to get there we need to set up an ssl certificate for your site! [Click here for resource]( https://www.nginx.com/blog/using-free-ssltls-certificates-from-lets-encrypt-with-nginx/)
 
-2. Server pushing, with http2 enabled, can improve the way content is loaded by linking specific files to location directives: https://www.nginx.com/blog/nginx-1-13-9-http2-server-push/
+2. Server pushing, with http2 enabled, can improve the way content is loaded by linking specific files to location directives: [Click here for resource](https://www.nginx.com/blog/nginx-1-13-9-http2-server-push/)
 
-3. Rate limiting, a built in module to Nginx, allows the managing of incoming connections in order to improve security, reliability, and service based connections: https://www.nginx.com/blog/rate-limiting-nginx/
+3. Rate limiting, a built in module to Nginx, allows the managing of incoming connections in order to improve security, reliability, and service based connections: [Click here for resource](https://www.nginx.com/blog/rate-limiting-nginx/)
 
-4. Basic Authentication, a simple to set up but very handy option to add as an extra layer of account user security: https://docs.nginx.com/nginx/admin-guide/security-controls/configuring-http-basic-authentication/
+4. Basic Authentication, a simple to set up but very handy option to add as an extra layer of account user security: [Click here for resource](https://docs.nginx.com/nginx/admin-guide/security-controls/configuring-http-basic-authentication/)
 
-5. Reverse proxying, which allows an intermediary between a client and the resource itself. Useful for when you need to serve some additional logic from the back end service to the client: https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/
+5. Reverse proxying, which allows an intermediary between a client and the resource itself. Useful for when you need to serve some additional logic from the back end service to the client: [Click here for resource](https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/)
 
-6. Load balancing, a reliable way to audit user requested traffic from the client to the back end server: https://docs.nginx.com/nginx/admin-guide/load-balancer/http-load-balancer/
+6. Load balancing, a reliable way to audit user requested traffic from the client to the back end server: [Click here for resource](https://docs.nginx.com/nginx/admin-guide/load-balancer/http-load-balancer/)
 
-7. And finally, drum roll please...... Common pitfalls to be aware of when working with Nginx! https://www.nginx.com/resources/wiki/start/topics/tutorials/config_pitfalls/
+7. And finally, drum roll please...... Common pitfalls to be aware of when working with Nginx! [Click here for resource](https://www.nginx.com/resources/wiki/start/topics/tutorials/config_pitfalls/)
 
-8. Cough, cough... actually one more thing for those who still need more learning, a tailored repo to advanced Nginx learning! https://github.com/fcambus/nginx-resources
+8. Cough, cough... actually one more thing for those who still need more learning, a tailored repo to advanced Nginx learning! [Click here for resource](https://github.com/fcambus/nginx-resources)
 
 Alright well that's enough. I hope that all of this content has given you more confidence to tackle server side challenges. I know that it has for me, and I will certainly appreciate using Nginx more now that I understand it!
 
